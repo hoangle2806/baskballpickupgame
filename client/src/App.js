@@ -19,9 +19,13 @@ import EditProfile from './components/edit-profile/EditProfile';
 import Posts from './components/posts/Posts';
 import NotFound from './components/not-found/NotFound';
 
-
+// Import CSS:
+import './css/general.css';
 import './App.css';
+import image from './css/images/main.jpg';
+// redux
 import store from './store';
+
 
 //check for token
 if(localStorage.jwtToken){
@@ -51,22 +55,27 @@ class App extends Component {
       <BrowserRouter>
       <div className="App">
         <NavBar />
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/register" component={Register}/>
-        <Route exact path="/login" component={Login}/>
-        <Switch>
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        </Switch>
-        <Switch>
-          <PrivateRoute exact path="/create-profile" component={CreateProfile} />
-        </Switch>
-        <Switch>
-          <PrivateRoute exact path="/edit-profile" component={EditProfile} />
-        </Switch>
-        <Switch>
-          <PrivateRoute exact path="/feed" component={Posts} />
-        </Switch>
-        <Route exact path="/not-found" component={NotFound} />
+        <div className="container">
+        <img src={image} className="image" alt=""/>
+          <div className="content">
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/register" component={Register}/>
+            <Route exact path="/login" component={Login}/>
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/edit-profile" component={EditProfile} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/feed" component={Posts} />
+            </Switch>
+            <Route exact path="/not-found" component={NotFound} />
+          </div>
+        </div>
         <Footer />
       </div>
       </BrowserRouter>
