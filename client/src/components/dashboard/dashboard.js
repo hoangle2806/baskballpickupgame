@@ -8,6 +8,7 @@ import {Spinner} from '../../common/Spinner';
 import { Link } from 'react-router-dom';
 import ProfileActions from './ProfileActions';
 import ProfileDisplay from './ProfileDisplay';
+import DisplayProfile from '../profiles/DisplayProfile';
 
 class Dashboard extends Component{
     componentDidMount(){
@@ -20,6 +21,7 @@ class Dashboard extends Component{
     render(){
         const { user } = this.props.auth;
         const { profile, loading } = this.props.profile;
+        console.log(user);
         let dashboardContent;
         if(profile === null || loading){
             dashboardContent = <Spinner />
@@ -30,7 +32,8 @@ class Dashboard extends Component{
                     <div>
                     <p className="lead text-muted"> Welcome <Link to='/dashboard'>{ user.name }</Link></p>
                     <ProfileActions />
-                    <ProfileDisplay userdata={ profile }/>
+                    {/* <ProfileDisplay userdata={ profile }/> */}
+                    <DisplayProfile userdata={ profile } userImage={ user }/>
                     <div style={{ marginBottom: '60px' }} />
                     <button onClick={this.onDeleteClick} className="btn btn-danger">Delete My Account</button>
                     </div>

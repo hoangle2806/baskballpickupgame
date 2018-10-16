@@ -57,7 +57,6 @@ class App extends Component {
         <NavBar />
         <div className="container">
         <img src={image} className="image" alt=""/>
-          <div className="content">
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>
@@ -74,7 +73,6 @@ class App extends Component {
               <PrivateRoute exact path="/feed" component={Posts} />
             </Switch>
             <Route exact path="/not-found" component={NotFound} />
-          </div>
         </div>
         <Footer />
       </div>
