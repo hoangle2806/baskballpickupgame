@@ -58,6 +58,8 @@ router.post(
             text : req.body.text,
             location: req.body.location,
             user: req.user.id,
+            name: req.user.name,
+            avatar: req.user.avatar,
         })
         newPost.save().then(post => res.json(post));
     }

@@ -16,17 +16,16 @@ class PostItem extends Component{
             <div className="card card-body mb-3">
               <div className="row">
                 <div className="col-md-2">
-                  <a href="profile.html">
+                  <a href="/dashboard">
                     <img
-                      className="rounded-circle d-none d-md-block"
+                      src={post.avatar}
+                      className="rounded-circle d-none d-md-block avatar-image"
                       alt=""
                     />
                   </a>
-                  <br />
-                  <p className="text-center">{post.name}</p>
                 </div>
-                <div className="col-md-10">
-                  <p className="lead">{post.text} at {post.location}</p>
+                <div className="col-md-6">
+                  <p className="lead">{post.name} : {post.text} at {post.location}</p>
                 </div>
               </div>
             </div>

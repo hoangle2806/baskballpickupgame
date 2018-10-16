@@ -13,6 +13,12 @@ const PostSchema = new Schema({
     location: {
         type: String,
     },
+    name:{
+        type: String,
+    },
+    avatar: {
+        type: String,
+    },
     participants: [
         {
             user:{

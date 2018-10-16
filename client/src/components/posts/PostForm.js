@@ -9,6 +9,8 @@ class PostForm extends Component{
     state ={
         text: '',
         location: '',
+        avatar: '',
+        name:'',
         errors:{}
     }
     onChange = (event) => {
@@ -21,11 +23,15 @@ class PostForm extends Component{
         const newPost = {
             text: this.state.text,
             location: this.state.location,
+            // avatar: user.avatar,
+            // name: user.name,
         }
         this.props.addPost(newPost);
         this.setState({
             text: "",
-            location: ""
+            location: "",
+            // avatar: '',
+            // name: '',
         })
     }
     render(){
@@ -33,7 +39,7 @@ class PostForm extends Component{
         return (
             <div className="post-form mb-3">
               <div className="card card-info">
-                <div className="card-header bg-info text-white">Say Something...</div>
+                <div className="card-header bg-info text-white">Post a game</div>
                 <div className="card-body">
                   <form onSubmit={this.onSubmit}>
                     <div className="form-group">
