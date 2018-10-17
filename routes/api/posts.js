@@ -65,27 +65,25 @@ router.post(
     }
 )
 
-// @route POST api/posts/comment/:id
+// @route POST api/posts/participate/:id
 // @desc add comment to post
 // @access Private
 router.post(
-    '/comment/:id',
+    '/participate/:id',
     passport.authenticate('jwt', { session: false }),
     (req,res) => {
-        Post.findById(req.params.id)
-            .then(post => {
-                const newComment = {
-                    text : req.body.text,
-                    attend: req.body.attend,
-                    user: req.user.id
-                }
-
-                //Add To comments array
-                post.participants.unshift(newComment);
-                //save
-                post.save().then(post => res.json(post));
-            })
-            .catch(err => res.status(404).json({ postnotfound: "No Post Found"}))
+        Profile.findOne({ user: req.user.id }).then( profile => {
+            Post.findById(req.params.id)
+                .then(post =>{
+                    if (post.participants.filter( participant => participant.user.toString() === req.user.id).length >0){
+                        return res.status(400).json({ alreadyParticipated: "User already participate"});
+                    }
+                    //add User id into participants array:
+                    post.participants.unshift({ user: req.user.id});
+                    post.save().then(post => res.json(post));
+                })
+                .catch( err => res.status(404).json({ postnotfound: "No Post Found"}))
+        })
     }
 );
 

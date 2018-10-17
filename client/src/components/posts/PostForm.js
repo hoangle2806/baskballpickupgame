@@ -30,8 +30,8 @@ class PostForm extends Component{
         this.setState({
             text: "",
             location: "",
-            // avatar: '',
-            // name: '',
+            avatar: '',
+            name: '',
         })
     }
     render(){

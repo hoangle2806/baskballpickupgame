@@ -4,16 +4,28 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
-import { deletePost } from '../../actions/PostActions';
+import { deletePost, addParticipate } from '../../actions/PostActions';
 
 class PostItem extends Component{
     onDeleteClick = (event,id) => {
         this.props.deletePost(id);
       }
+    onLikeClick = (event,id)=>{
+      this.props.addParticipate(id);
+    }
+
+    findUserLike = (likes) => {
+      const {auth} = this.props;
+      if (likes.filter(like => like.user === auth.user.id ).length > 0){
+        return true;
+      }else{
+        return false;
+      }
+    }
     render(){
         const {auth, post} = this.props;
         return(
-            <div className="card card-body mb-3">
+            <div className="card card-body mb-1">
               <div className="row">
                 <div className="col-md-1">
                   <a href="/dashboard">
@@ -26,6 +38,18 @@ class PostItem extends Component{
                 </div>
                 <div className="col-md-3">
                   <p className="lead">{post.name} : {post.text} at {post.location}</p>
+                  <button
+                    onClick={(event) => this.onLikeClick(event,post._id)}
+                    type="button"
+                    className="btn btn-light mr-1"
+                  >
+                    <i
+                      className={classnames('fas fa-thumbs-up', {
+                        'text-info': this.findUserLike(post.participants)
+                      })}
+                    />
+                    <span className="badge badge-light">{post.participants.length}</span>
+                  </button>
                   {post.user === auth.user.id ? (
                   <button
                     onClick={(event) => this.onDeleteClick(event,post._id)}
@@ -50,6 +74,7 @@ PostItem.propTypes = {
     auth: PropTypes.object.isRequired,
     post: PropTypes.object.isRequired,
     deletePost: PropTypes.func.isRequired,
+    addParticipate : PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {
@@ -62,7 +87,10 @@ const mapDispatchToProps = (dispatch)=>{
     return {
       deletePost: (id) => {
         dispatch(deletePost(id))
-      }
+      },
+      addParticipate : (id) => {
+        dispatch(addParticipate(id))
+      },
     }
 }
 

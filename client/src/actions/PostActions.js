@@ -49,13 +49,20 @@ export const deletePost = (id) => dispatch =>{
         }));
 }
 
-// // Add Like
+// Add participate
+export const addParticipate = (postId) => dispatch =>{
+    axios.post(`/api/posts/participate/${postId}`)
+        .then(res => dispatch(getPosts()))
+        .catch(err => dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        }));
+}
+
+// Remove participate
 // export const addLike = (postId) => dispatch =>{
-//     axios.post(`/api/posts/${postId}`)
-//         .then(res => dispatch({
-//             type: ADD_POST,
-//             payload: res.data
-//         }))
+//     axios.post(`/api/posts/unparticipate/${postId}`)
+//         .then(res => dispatch(getPosts()))
 //         .catch(err => dispatch({
 //             type: GET_ERRORS,
 //             payload: err.response.data
