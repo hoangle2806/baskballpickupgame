@@ -15,7 +15,7 @@ class PostItem extends Component{
         return(
             <div className="card card-body mb-3">
               <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-1">
                   <a href="/dashboard">
                     <img
                       src={post.avatar}
@@ -24,7 +24,7 @@ class PostItem extends Component{
                     />
                   </a>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-3">
                   <p className="lead">{post.name} : {post.text} at {post.location}</p>
                   {post.user === auth.user.id ? (
                   <button
