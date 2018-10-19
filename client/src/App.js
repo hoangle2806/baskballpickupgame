@@ -27,6 +27,7 @@ import image from './css/images/main.jpg';
 import store from './store';
 
 
+
 //check for token
 if(localStorage.jwtToken){
   // Set the authtoken header auth
