@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {Spinner} from '../../common/Spinner';
 import { connect } from 'react-redux';
 import {getPosts} from '../../actions/PostActions';
+import DisplayMap from '../../components/maps/DisplayMap';
 
 
 class Posts extends Component{
@@ -21,6 +22,9 @@ class Posts extends Component{
         }
         return(
             <div className="feed">
+                <div className="map">
+                    <DisplayMap />
+                </div>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">

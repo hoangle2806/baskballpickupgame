@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 import TextFieldGroup from '../../common/TextFieldGroup';
-import DisplayMap from '../../components/maps/DisplayMap';
 
 class Login extends Component{
     state = {
@@ -45,7 +44,6 @@ class Login extends Component{
         const { errors } = this.state;
         return(
             <div className="login">
-            <DisplayMap />
             <div className="container">
               <div className="row">
                 <div className="col-md-8 m-auto">
