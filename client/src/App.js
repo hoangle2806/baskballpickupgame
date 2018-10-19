@@ -57,7 +57,8 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <div className="container">
-        <img src={image} className="image" alt=""/>
+        {/* Replace heavy picture with a logo degisn or something */}
+        {/* <img src={image} className="image" alt=""/> */} 
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>
