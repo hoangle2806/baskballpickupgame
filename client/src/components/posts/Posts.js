@@ -6,6 +6,7 @@ import {Spinner} from '../../common/Spinner';
 import { connect } from 'react-redux';
 import {getPosts} from '../../actions/PostActions';
 import DisplayMap from '../../components/maps/DisplayMap';
+import AutoCompleteAdress from '../maps/AutoCompleteAdress';
 
 
 class Posts extends Component{
@@ -22,6 +23,9 @@ class Posts extends Component{
         }
         return(
             <div className="feed">
+                <div className="autofill-address">
+                    <AutoCompleteAdress />
+                </div>
                 <div className="map">
                     <DisplayMap />
                 </div>

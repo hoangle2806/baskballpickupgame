@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 class DisplayMap extends Component{
     componentDidMount(){
         this.renderMap();
@@ -21,7 +20,7 @@ class DisplayMap extends Component{
     render(){
         return(
             <div id="map">
-                <h1>GOOGLE MAPS</h1>
+                
             </div>
         )
     }
